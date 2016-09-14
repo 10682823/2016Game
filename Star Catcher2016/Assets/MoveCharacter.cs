@@ -15,9 +15,37 @@ public class MoveCharacter : MonoBehaviour {
     public float jumpSpeed = 1;
     public int jumpCount = 0;
     public int jumpCountMax = 2;
+    //sliding vars
+    public int slideDuration = 100;
+    public float slideTime = 0.01f;
+    //coroutine for sliding the character
+    IEnumerator Slide ()
+    {
+        //set a temp var to the value of slideDuration
+        int durationTemp = slideDuration;
+        //
+        float speedTemp = speed;
+        speed += speed;
+        //While loop runs "while" the slideDuration is greater than 0
+        while (slideDuration > 0)
+        {
+            
+            //decrement the slideDuration
+            slideDuration--;
+            //yield "hold the corountine"
+            //return "sends" to the corountine to do an opperation while yielding
+            //new creates an instance of an object
+            //WaitFor Seconds is an object that waits for a duation of time
+            yield return new WaitForSeconds(slideTime);
+            
+        }
+        speed = speedTemp;
+        slideDuration = durationTemp;
+    }
+    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //This finds the character component
         mycc = GetComponent<CharacterController>();
 	
@@ -35,6 +63,18 @@ public class MoveCharacter : MonoBehaviour {
             //adding the jump speed var to the tempPos var
             tempPos.y = jumpSpeed;
         }
+        //start sliding
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.S))
+        {
+            //StartCoroutine is a function that calls a coroutine. Use the coroutine in the argument
+            StartCoroutine(Slide());
+        }
+            //start sliding
+            if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.S))
+            {
+                //StartCoroutine is a function that calls a coroutine. Use the coroutine in the argument
+                StartCoroutine(Slide());
+            }
             //test if the character controller is grounded
             if(mycc.isGrounded)
         {

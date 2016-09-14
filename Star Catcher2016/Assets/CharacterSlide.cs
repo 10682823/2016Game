@@ -17,8 +17,6 @@ public class CharacterSlide : MonoBehaviour {
             yield return new WaitForSeconds(slideTime);
             print("sliding");
         }
-        //while iterations
-        //wait for secs
         //move the character controller
     }
 
