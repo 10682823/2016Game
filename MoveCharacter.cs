@@ -42,12 +42,18 @@ public class MoveCharacter : MonoBehaviour {
         speed = speedTemp;
         slideDuration = durationTemp;
     }
-    
+	void StartGameHandler ()
+	{
+		//MoveUsingArrowKeys.MoveOnArrows += MoveCamera;
+		GameControl.StartGame += StartGameHandler;
+	}
 
     // Use this for initialization
     void Start () {
         //This finds the character component
+		//EndGame.GameOver += StopScript;
         mycc = GetComponent<CharacterController>();
+		GameControl.StartGame += StartGameHandler;
 	
 	}
 
@@ -88,5 +94,9 @@ public class MoveCharacter : MonoBehaviour {
             //moves teh character controller at an evan pace (deltaTime)
             mycc.Move(tempPos * Time.deltaTime);
 
+
+
         }
+
+
  }
