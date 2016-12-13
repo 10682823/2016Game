@@ -2,9 +2,13 @@
 using System.Collections;
 
 public class CharacterFlipArt : MonoBehaviour
+
+
 {
 	//public Transform characterArt;
-	public bool forward = false;
+
+	public Transform characterArt;
+	public bool forward = true;
 
 	void FlipCharacter (KeyCode _keyCode)
 	{

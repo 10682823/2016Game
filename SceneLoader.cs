@@ -1,21 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
-	void OnTriggerEnter ()
+	//public Button startText;
+	//public Button quitText;
+	//public Button restartText;
+
+	void Start()
 	{
-		RestartLevel ();
+		
+		//startText = startText.GetComponent<Button> ();
+		//quitText = quitText.GetComponent<Button> ();
+		//restartText = restartText.GetComponent<Button> ();
 	}
+
 
 	public void RestartLevel()
 	{
-		SceneManager.LoadScene (1);
+		
+		SceneManager.LoadScene(1);
 	}
 
-	public void StartGame (){
-		SceneManager.LoadScene (0);
-			
+	public void QuitLevel()
+	{
+		//SceneManager.LoadScene (0);
+		Application.Quit();
 	}
+
+	public void GameOverScene()
+	{
+		SceneManager.LoadScene (2);
+	}
+
+	void OnTriggerEnter ()
+	{
+		GameOverScene ();
+	}
+
 }

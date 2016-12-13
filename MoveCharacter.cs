@@ -4,7 +4,7 @@ using System.Collections;
 public class MoveCharacter : MonoBehaviour {
 
     //This is the character Controller Component
-    private CharacterController mycc;
+    public CharacterController mycc;
 
     //Temp bar of datatype vactor3 to move the character
     private Vector3 tempPos;
